@@ -4,7 +4,7 @@ export const centralError = (error, req, res, next) => {
     const data = error.data;
     res.status(status).json({
       message: message,
-      data: data,
+      data: data
     });
   };
   
