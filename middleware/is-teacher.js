@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 //importing driver model
-import User from "../models/user.js";
+import user from "../models/user.js";
 export const isTeacher = async (req, res, next) => {
   const authHeader = req.get("Authorization");
   try {
@@ -18,19 +18,19 @@ export const isTeacher = async (req, res, next) => {
       error.statusCode = 401;
       next(error);
     }
-    const user = await User.findOne({
+    const teacher = await user.findOne({
       where: {
         email: decodedToken.email,
 
-        isUserActive: true,
+        isActive: true,
       },
     });
-    if (!user) {
+    if (!teacher) {
       const error = new Error("teacher not found");
       error.statusCode = 404;
       next(error);
     }
-    if ((!user, ["dataValues"]["isVerified"])) {
+    if ((!teacher, ["dataValues"]["isVerified"])) {
       const error = new Error("Not Verified Teacher");
       error.statusCode = 403;
       return next(error);

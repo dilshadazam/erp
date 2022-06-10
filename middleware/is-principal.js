@@ -6,11 +6,12 @@ import user from "../models/users.js";
 export const isPrincipal = async (req, res, next) => {
   const authHeader = req.get("Authorization");
   try {
-    if (!authHeader) { 
+    if (!authHeader) {
       const err = new Error("Not authorized");
       err.statusCode = 401;
       return next(err);
-    } console.log("run isPrincipal auth header ");
+    }
+    console.log("run isPrincipal auth header ");
     const token = authHeader.split(" ")[1]; //Authorization header looks like {Authorization: 'Bearer ' + this.props.token}
     let decodedToken;
     decodedToken = jwt.verify(token, process.env.TOKEN_SIGNING_KEY);
@@ -35,7 +36,7 @@ export const isPrincipal = async (req, res, next) => {
       error.statusCode = 403;
       return next(error);
     }
-    req.principalId = decodedToken.id;
+    req.userId = decodedToken.id;
     req.email = decodedToken.email;
     next();
   } catch (err) {
