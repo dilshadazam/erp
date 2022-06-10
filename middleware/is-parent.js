@@ -1,8 +1,9 @@
 import jwt from "jsonwebtoken";
 
 //importing driver model
-import User from "../models/user.js";
-export const isUser = async (req, res, next) => {
+import user from "../models/users.js";
+
+export const isParent = async (req, res, next) => {
   const authHeader = req.get("Authorization");
   try {
     if (!authHeader) {
@@ -10,6 +11,7 @@ export const isUser = async (req, res, next) => {
       err.statusCode = 401;
       return next(err);
     }
+    console.log("run isParent auth header ");
     const token = authHeader.split(" ")[1]; //Authorization header looks like {Authorization: 'Bearer ' + this.props.token}
     let decodedToken;
     decodedToken = jwt.verify(token, process.env.TOKEN_SIGNING_KEY);
@@ -18,20 +20,19 @@ export const isUser = async (req, res, next) => {
       error.statusCode = 401;
       next(error);
     }
-    const user = await User.findOne({
+    const parent = await user.findOne({
       where: {
         email: decodedToken.email,
-
         isUserActive: true,
       },
     });
-    if (!user) {
-      const error = new Error("user not found");
+    if (!parent) {
+      const error = new Error("Parent not found");
       error.statusCode = 404;
       next(error);
     }
-    if ((!user, ["dataValues"]["isVerified"])) {
-      const error = new Error("Not Verified User");
+    if ((!parent, ["dataValues"]["isVerified"])) {
+      const error = new Error("Not Verified Parent");
       error.statusCode = 403;
       return next(error);
     }
