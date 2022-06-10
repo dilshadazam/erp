@@ -13,7 +13,7 @@ import cors from "cors";
 //all error controllers imported here
 import { corsError } from "./middleware/error-handlers/cors-error.js";
 
-import { centralError } from "./middleware/error-handlers/central-errror.js";
+import { centralError } from "./middleware/error-handlers/central-error.js";
 
 //all routes imported here
 
