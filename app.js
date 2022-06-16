@@ -12,6 +12,10 @@ import cors from "cors";
 
 //all error controllers imported here
 import { corsError } from "./middleware/error-handlers/cors-error.js";
+//all routes imported here
+import authenticationRoutes from "./routes/authentication-routes.js";
+// import administratorRoutes from "./routes/administrator-routes.js";
+// import userRoutes from "./routes/user-routes.js";
 
 import { centralError } from "./middleware/error-handlers/central-error.js";
 
@@ -103,7 +107,7 @@ if (cluster.isMaster) {
   // );
 
   //All routes entrypoint here
-  // app.use("/auth", authenticationRoutes);
+  app.use("/auth", authenticationRoutes);
   // app.use("/administrator", administratorRoutes);
 
   app.use(helmet());
@@ -117,7 +121,7 @@ if (cluster.isMaster) {
     .sync()
     .then(() => {
       app.listen(port);
-      console.log(`  Hogya server chalu bhai: ${port}  `);
+      console.log(`  All done bro! 🎉 ${port}  `);
     })
     .catch((err) => {
       console.log(err);

@@ -2,12 +2,11 @@ import express from "express";
 
 import { body } from "express-validator";
 
-import { adminSignup } from "../controllers/authentication/administrator/admin-signup.js";
+import { adminSignup } from "../controllers/authentication/adminAuth/admin-signup.js";
 
-import { administratorLogin } from "../controllers/authentication/administrator/admin-login.js";
+import { adminSignin } from "../controllers/authentication/adminAuth/admin-signin.js";
 
 const router = express.Router();
-
 //ADMIN LOGIN USING EMAIL + PASSWORD
 router.post(
   "/administrator/signup",
@@ -38,7 +37,7 @@ router.post(
       .isLength({ min: 6 })
       .withMessage("Minimum 6 characters"),
   ],
-  administratorLogin
+  adminSignin
 );
 
 export default router;
