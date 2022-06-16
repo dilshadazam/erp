@@ -117,7 +117,7 @@ if (cluster.isMaster) {
     .sync()
     .then(() => {
       app.listen(port);
-      console.log(`✔️  Server listening on port: ${port} ✔️ `);
+      console.log(`  Hogya server chalu bhai: ${port}  `);
     })
     .catch((err) => {
       console.log(err);

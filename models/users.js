@@ -49,6 +49,10 @@ const User = sequelize.define("user", {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
+  isAccountant: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
 
   isAccountant: {
     type: Sequelize.BOOLEAN,
