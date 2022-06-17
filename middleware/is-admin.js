@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 //importing driver model
-import User from "../models/admin.js";
+import Admin from "../models/admin.js";
 
 export const isAdministrator = async (req, res, next) => {
   const authHeader = req.get("Authorization");
@@ -21,10 +21,10 @@ export const isAdministrator = async (req, res, next) => {
       error.statusCode = 401;
       next(error);
     }
-    const administrator = await User.findOne({
+    const administrator = await Admin.findOne({
       where: {
         email: decodedToken.email,
-        isAdminActive: true,
+        isActive: true,
       },
     });
     if (!administrator) {
@@ -37,7 +37,7 @@ export const isAdministrator = async (req, res, next) => {
       error.statusCode = 403;
       return next(error);
     }
-    req.userId = decodedToken.id;
+    req.adminId = decodedToken.id;
     req.email = decodedToken.email;
     next();
   } catch (err) {

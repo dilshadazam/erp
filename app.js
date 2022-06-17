@@ -14,7 +14,7 @@ import cors from "cors";
 import { corsError } from "./middleware/error-handlers/cors-error.js";
 //all routes imported here
 import authenticationRoutes from "./routes/authentication-routes.js";
-// import administratorRoutes from "./routes/administrator-routes.js";
+import administratorRoutes from "./routes/admin-routes.js";
 // import userRoutes from "./routes/user-routes.js";
 
 import { centralError } from "./middleware/error-handlers/central-error.js";
@@ -108,7 +108,7 @@ if (cluster.isMaster) {
 
   //All routes entrypoint here
   app.use("/auth", authenticationRoutes);
-  // app.use("/administrator", administratorRoutes);
+  app.use("/administrator", administratorRoutes);
 
   app.use(helmet());
   app.use(compression());
