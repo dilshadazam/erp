@@ -2,7 +2,7 @@
 import bcrypt from "bcryptjs";
 
 //models
-import User from "../../../models/users.js";
+import User from "../../../models/admin.js";
 
 //helpers
 import { validationErrorHandler } from "../../../helpers/validation-error-handler.js";
@@ -10,6 +10,7 @@ import { validationErrorHandler } from "../../../helpers/validation-error-handle
 export const adminSignup = async (req, res, next) => {
   validationErrorHandler(req, next);
   const { name, email, password } = req.body;
+  console.log(name, email, password);
   try {
     const admin = await User.findOne({ where: { email } });
     if (admin) {
@@ -22,6 +23,7 @@ export const adminSignup = async (req, res, next) => {
       name,
       email,
       password: encryptedPassword,
+      isActive: true,
       isAdmin: true,
     });
     res.status(201).json({

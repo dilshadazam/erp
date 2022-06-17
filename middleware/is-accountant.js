@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 //importing driver model
-import User from "../models/users.js";
+import User from "../models/admin.js";
 
 export const isAccountant = async (req, res, next) => {
   const authHeader = req.get("Authorization");

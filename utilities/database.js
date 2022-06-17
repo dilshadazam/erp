@@ -1,6 +1,7 @@
 import Sequelize from "sequelize";
 
 const sequelize = new Sequelize(
+  // s
   "cool",
   "root",
   "",

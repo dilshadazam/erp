@@ -21,43 +21,12 @@ const User = sequelize.define("user", {
     type: Sequelize.STRING,
     allowNull: true,
   },
-  phone: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  otp: {
-    type: Sequelize.INTEGER,
-    allowNull: true,
-  },
-  profileImageUrl: {
-    type: Sequelize.STRING,
-    allowNull: true,
-  },
+
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
-  isPrincipal: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
-  },
-  isTeacher: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
-  },
-  isStudent: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
-  },
-  isAccountant: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
-  },
 
-  isAccountant: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
-  },
   isAuthorized: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,

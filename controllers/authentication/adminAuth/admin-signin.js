@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 //models
-import User from "../../../models/users.js";
+import User from "../../../models/admin.js";
 
 //helpers
 import { validationErrorHandler } from "../../../helpers/validation-error-handler.js";
@@ -44,7 +44,7 @@ export const adminSignin = async (req, res, next) => {
       { refreshToken: refreshToken },
       { where: { email, isAdmin: true } }
     );
-    res.status(201).json({
+    res.status(200).json({
       msg: `Login with email Successful`,
       token: token,
       refreshToken: refreshToken,
