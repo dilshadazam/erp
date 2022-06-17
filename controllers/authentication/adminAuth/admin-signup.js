@@ -2,7 +2,7 @@
 import bcrypt from "bcryptjs";
 
 //models
-import User from "../../../models/admin.js";
+import Admin from "../../../models/admin.js";
 
 //helpers
 import { validationErrorHandler } from "../../../helpers/validation-error-handler.js";
@@ -12,14 +12,14 @@ export const adminSignup = async (req, res, next) => {
   const { name, email, password } = req.body;
   console.log(name, email, password);
   try {
-    const admin = await User.findOne({ where: { email } });
+    const admin = await Admin.findOne({ where: { email } });
     if (admin) {
       const error = new Error("Entered Email-Id already exists");
       error.statusCode = 403;
       return next(error);
     }
     const encryptedPassword = await bcrypt.hash(password, 12);
-    const result = await User.create({
+    const result = await Admin.create({
       name,
       email,
       password: encryptedPassword,
