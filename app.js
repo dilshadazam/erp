@@ -15,11 +15,13 @@ import { corsError } from "./middleware/error-handlers/cors-error.js";
 //all routes imported here
 import authenticationRoutes from "./routes/authentication-routes.js";
 import administratorRoutes from "./routes/admin-routes.js";
-// import userRoutes from "./routes/user-routes.js";
+// import parentRoutes from "./routes/parent-routes.js";
+// import teacherRoutes from "./routes/teachers_routes.js";
+// import ccountantRoutes from "./models/accountant.js";
+// import parentRoutes from "./routes/parent-routes.js";
+// import studentRoutes from "./routes/teachers_routes.js";
 
 import { centralError } from "./middleware/error-handlers/central-error.js";
-
-//all routes imported here
 
 const cpu = os.cpus().length;
 
