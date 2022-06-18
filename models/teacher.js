@@ -51,6 +51,10 @@ const Teacher = sequelize.define("teacher", {
     type: Sequelize.STRING,
     allowNull: true,
   },
+  address: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
   classteacher: {
     type: Sequelize.STRING,
     allowNull: true,

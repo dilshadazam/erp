@@ -27,6 +27,10 @@ const Accountant = sequelize.define("accountant", {
     type: Sequelize.STRING,
     allowNull: true,
   },
+  phone: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
   password: {
     type: Sequelize.STRING,
     allowNull: true,
@@ -35,6 +39,27 @@ const Accountant = sequelize.define("accountant", {
     type: Sequelize.STRING,
     allowNull: true,
   },
+  joiningdate: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  higherqualification: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  gender: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  adharcardno: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  address: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+
   isAccountant: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
