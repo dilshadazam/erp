@@ -9,7 +9,17 @@ import { validationErrorHandler } from "../../../helpers/validation-error-handle
 // EXPORT FUNCTION NAME FOR ROUTE
 export const teacherSignup = async (req, res, next) => {
   validationErrorHandler(req, next);
-  const { name, email, password } = req.body;
+  const {
+    name,
+    email,
+    password,
+    joiningdate,
+    higherqualification,
+    gender,
+    phone,
+    adharcardno,
+    classteacher,
+  } = req.body;
 
   try {
     const teacherdata = await Teacher.findOne({
@@ -28,6 +38,12 @@ export const teacherSignup = async (req, res, next) => {
     const result = await Teacher.create({
       name,
       email,
+      joiningdate,
+      higherqualification,
+      gender,
+      phone,
+      adharcardno,
+      classteacher,
       password: encryptedPassword,
       isActive: true,
       isAuthorized: true,

@@ -35,17 +35,33 @@ const Teacher = sequelize.define("teacher", {
     type: Sequelize.STRING,
     allowNull: true,
   },
+  joiningdate: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  higherqualification: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  gender: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  adharcardno: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  classteacher: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+
   profileImageUrl: {
     type: Sequelize.STRING,
     allowNull: true,
   },
 
   isTeacher: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
-  },
-
-  isAccountant: {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
