@@ -1,11 +1,7 @@
 import express from "express";
 
-//BODY VALIDATOR IMPORT
-import { body } from "express-validator";
-
 const router = express.Router();
 
-//MIDDLEWARE OF LOANPROVIDER
-import { isUser } from "../middleware/is-user.js";
+// import { isLoanprovider } from "../middleware/is-loanprovider.js";
 
 export default router;

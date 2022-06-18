@@ -10,8 +10,13 @@ import { principalSignin } from "../controllers/authentication/principalAuth/pri
 //accountant authentication import
 import { accountantSignup } from "../controllers/authentication/accountantAuth/accountant-signup.js";
 import { accountantSignin } from "../controllers/authentication/accountantAuth/accountant-signin.js";
+//teacher authencitaion import
+import { teacherSignup } from "../controllers/authentication/teacherAuth/teacher-signup.js";
+import { teacherSignin } from "../controllers/authentication/teacherAuth/teacher-signin.js";
+
 const router = express.Router();
 import { isAdministrator } from "../middleware/is-admin.js";
+import { isAccountant } from "../middleware/is-accountant.js";
 // import { isLoanprovider } from "../middleware/is-loanprovider.js";
 
 //ADMIN signup USING EMAIL + PASSWORD
@@ -114,6 +119,40 @@ router.post(
       .withMessage("Minimum 6 characters"),
   ],
   accountantSignin
+);
+
+//TEACHER SIGNUP USING EMAIL + PASSWORD
+router.post(
+  "/teacher/teacher-signup",
+  [
+    body("name").trim().not().isEmpty().withMessage("Name is required"),
+    body("email")
+      .isEmail()
+      .normalizeEmail()
+      .withMessage("Should be in a valid email format"),
+    body("password")
+      .trim()
+      .isLength({ min: 6 })
+      .withMessage("Minimum 6 characters"),
+  ],
+  isAccountant,
+  teacherSignup
+);
+
+//TEACHER SIGNIN USING EMAIL + PASSWORD
+router.post(
+  "/teacher/teacher-signin",
+  [
+    body("email")
+      .isEmail()
+      .normalizeEmail()
+      .withMessage("Should be in a valid email format"),
+    body("password")
+      .trim()
+      .isLength({ min: 6 })
+      .withMessage("Minimum 6 characters"),
+  ],
+  teacherSignin
 );
 
 export default router;
