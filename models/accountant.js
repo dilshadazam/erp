@@ -11,13 +11,7 @@ const Accountant = sequelize.define("accountant", {
     primaryKey: true,
   },
 
-  adminId: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    references: {
-      model: admin,
-      key: "id",
-    },
+ 
   },
   name: {
     type: Sequelize.STRING,
