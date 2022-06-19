@@ -27,7 +27,7 @@ const cpu = os.cpus().length;
 if (process.env.NODE_ENV !== "production") {
   dotenv.config();
 }
-
+const hostname = "0.0.0.0";
 const port = process.env.PORT || 3200;
 
 const app = express();
@@ -125,8 +125,9 @@ if (cluster.isMaster) {
   sequelize
     .sync()
     .then(() => {
-      app.listen(port);
-      console.log(`  All done bro! 🎉 ${port}  `);
+      app.listen(port, hostname);
+
+      console.log(`All done bro! 🎉http://${hostname}:${port}/`);
     })
     .catch((err) => {
       console.log(err);
