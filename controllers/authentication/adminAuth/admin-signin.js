@@ -32,8 +32,8 @@ export const adminSignin = async (req, res, next) => {
       error.statusCode = 401;
       return next(error);
     }
-    // const id = admin["id"];
-    // const name = admin["name"];
+    const id = admin["id"];
+    const name = admin["name"];
     const mail = admin["email"];
     const token = jwt.sign({ id, email: mail }, process.env.TOKEN_SIGNING_KEY, {
       expiresIn: "1 day",
