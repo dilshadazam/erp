@@ -62,7 +62,7 @@ if (cluster.isMaster) {
     console.log(`worker ${worker.process.pid} died`);
   });
 } else {
-  //multer file storage
+  // multer file storage
   // const fileStorage = multer.diskStorage({
   //   destination: (req, file, cb) => {
   //     let dir = "./uploaded-pdf";
