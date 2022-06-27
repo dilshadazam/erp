@@ -3,12 +3,12 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
 //models
-import Teacher from "../../../models/teacher.js";
+import Teacher from "../../../models/faculty.js";
 
 //helpers
 import { validationErrorHandler } from "../../../helpers/validation-error-handler.js";
 
-export const teacherSignin = async (req, res, next) => {
+export const facultySignin = async (req, res, next) => {
   validationErrorHandler(req, next);
   const { email, password } = req.body;
   try {

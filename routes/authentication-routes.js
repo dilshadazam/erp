@@ -11,8 +11,8 @@ import { principalSignin } from "../controllers/authentication/principalAuth/pri
 import { accountantSignup } from "../controllers/authentication/accountantAuth/accountant-signup.js";
 import { accountantSignin } from "../controllers/authentication/accountantAuth/accountant-signin.js";
 //teacher authencitaion import
-import { teacherSignup } from "../controllers/authentication/teacherAuth/teacher-signup.js";
-import { teacherSignin } from "../controllers/authentication/teacherAuth/teacher-signin.js";
+import { faacultySignup } from "../controllers/authentication/Faculty/faculty-signup.js";
+import { facultySignin } from "../controllers/authentication/Faculty/faculty-signin.js";
 
 const router = express.Router();
 import { isAdministrator } from "../middleware/is-admin.js";
@@ -123,7 +123,7 @@ router.post(
 
 //TEACHER SIGNUP USING EMAIL + PASSWORD
 router.post(
-  "/teacher/teacher-signup",
+  "/faculty/faculty-signup",
   [
     body("name").trim().not().isEmpty().withMessage("Name is required"),
     body("email")
@@ -136,12 +136,12 @@ router.post(
       .withMessage("Minimum 6 characters"),
   ],
   isAccountant,
-  teacherSignup
+  facultySignup
 );
 
 //TEACHER SIGNIN USING EMAIL + PASSWORD
 router.post(
-  "/teacher/teacher-signin",
+  "/faculty/faculty-signin",
   [
     body("email")
       .isEmail()
@@ -152,7 +152,7 @@ router.post(
       .isLength({ min: 6 })
       .withMessage("Minimum 6 characters"),
   ],
-  teacherSignin
+  facultySignin
 );
 
 export default router;

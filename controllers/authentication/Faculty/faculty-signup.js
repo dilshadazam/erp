@@ -2,12 +2,12 @@
 import bcrypt from "bcryptjs";
 
 //models
-import Teacher from "../../../models/teacher.js";
+import Faculty from "../../../models/faculty.js";
 
 //helpers
 import { validationErrorHandler } from "../../../helpers/validation-error-handler.js";
 // EXPORT FUNCTION NAME FOR ROUTE
-export const teacherSignup = async (req, res, next) => {
+export const facultySignup = async (req, res, next) => {
   validationErrorHandler(req, next);
   const {
     name,
@@ -23,7 +23,7 @@ export const teacherSignup = async (req, res, next) => {
   } = req.body;
 
   try {
-    const teacherdata = await Teacher.findOne({
+    const teacherdata = await Faculty.findOne({
       where: {
         email,
         accountantId: req.accountantId,
@@ -36,7 +36,7 @@ export const teacherSignup = async (req, res, next) => {
     }
     const encryptedPassword = await bcrypt.hash(password, 12);
     console.log(encryptedPassword);
-    const result = await Teacher.create({
+    const result = await Faculty.create({
       name,
       email,
       joiningdate,

@@ -1,9 +1,10 @@
 import Sequelize from "sequelize";
+import { facultySignin } from "../controllers/authentication/Faculty/faculty-signin.js";
 
 import sequelize from "../utilities/database.js";
 import accountant from "./accountant.js";
 
-const Teacher = sequelize.define("teacher", {
+const Faculty = sequelize.define("faculty", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -83,4 +84,4 @@ const Teacher = sequelize.define("teacher", {
   },
 });
 
-export default Teacher;
+export default Faculty;
