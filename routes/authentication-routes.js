@@ -147,6 +147,12 @@ router.post(
       .isEmail()
       .normalizeEmail()
       .withMessage("Should be in a valid email format"),
-   
+    body("password")
+      .trim()
+      .isLength({ min: 6 })
+      .withMessage("Minimum 6 characters"),
+  ],
+  facultySignin
+);
 
 export default router;
