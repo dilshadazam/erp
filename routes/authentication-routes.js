@@ -11,7 +11,7 @@ import { principalSignin } from "../controllers/authentication/principalAuth/pri
 import { accountantSignup } from "../controllers/authentication/accountantAuth/accountant-signup.js";
 import { accountantSignin } from "../controllers/authentication/accountantAuth/accountant-signin.js";
 //teacher authencitaion import
-import { faacultySignup } from "../controllers/authentication/Faculty/faculty-signup.js";
+import { facultySignup } from "../controllers/authentication/Faculty/faculty-signup.js";
 import { facultySignin } from "../controllers/authentication/Faculty/faculty-signin.js";
 
 const router = express.Router();
@@ -147,12 +147,6 @@ router.post(
       .isEmail()
       .normalizeEmail()
       .withMessage("Should be in a valid email format"),
-    body("password")
-      .trim()
-      .isLength({ min: 6 })
-      .withMessage("Minimum 6 characters"),
-  ],
-  facultySignin
-);
+   
 
 export default router;
