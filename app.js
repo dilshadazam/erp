@@ -122,14 +122,4 @@ if (cluster.isMaster) {
   app.use(centralError);
 
   // sync with database
-  sequelize
-    .sync()
-    .then(() => {
-      app.listen(port, hostname);
-
-      console.log(`All done bro! 🎉http://${hostname}:${port}/`);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
 }
